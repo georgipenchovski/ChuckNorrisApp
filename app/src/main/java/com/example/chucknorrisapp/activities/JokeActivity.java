@@ -2,6 +2,8 @@ package com.example.chucknorrisapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +21,8 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
 
     private ImageView imageView;
     private TextView textView;
+    private Button button;
+    private TextView txtCategory;
 
     @Override
     protected int getLayoutRes() {
@@ -27,6 +31,7 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
 
     @Override
     protected void onViewCreated() {
+        setupToolbar();
         getExtras();
 
         jokeUsecase = new JokeUsecase();
@@ -35,6 +40,15 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
 
         imageView = findViewById(R.id.img_item);
         textView = findViewById(R.id.txt_joke);
+        txtCategory = findViewById(R.id.txt_category);
+        txtCategory.setText(categoryName);
+        button = findViewById(R.id.btn_next_joke);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jokeUsecase.getJokeFromCategory(categoryName);
+            }
+        });
     }
 
     private void getExtras() {
@@ -57,5 +71,9 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     @Override
     public void showErrorMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private void setupToolbar() {
+
     }
 }
