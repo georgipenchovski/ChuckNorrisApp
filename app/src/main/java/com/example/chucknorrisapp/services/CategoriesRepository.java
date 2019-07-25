@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface CategoriesRepository {
 
-     void getCategories(DataListener<List<String>> categories);
+     void getCategories(DataListener<List<String>> listener);
 }

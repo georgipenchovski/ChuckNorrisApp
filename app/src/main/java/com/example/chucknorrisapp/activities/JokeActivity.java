@@ -19,10 +19,10 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     private String categoryName;
     private JokeUsecase jokeUsecase;
 
-    private ImageView imageView;
-    private TextView textView;
-    private Button button;
-    private TextView txtCategory;
+    private ImageView imgToolbar;
+    private TextView txtJoke;
+    private Button btnNextJoke;
+    private TextView txtCategoryToolbar;
 
     @Override
     protected int getLayoutRes() {
@@ -31,19 +31,16 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
 
     @Override
     protected void onViewCreated() {
-        setupToolbar();
         getExtras();
+        setupToolbar();
 
         jokeUsecase = new JokeUsecase();
         jokeUsecase.setViewListener(this);
         jokeUsecase.getJokeFromCategory(categoryName);
 
-        imageView = findViewById(R.id.img_item);
-        textView = findViewById(R.id.txt_joke);
-        txtCategory = findViewById(R.id.txt_category);
-        txtCategory.setText(categoryName);
-        button = findViewById(R.id.btn_next_joke);
-        button.setOnClickListener(new View.OnClickListener() {
+        txtJoke = findViewById(R.id.txt_joke);
+        btnNextJoke = findViewById(R.id.btn_next_joke);
+        btnNextJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jokeUsecase.getJokeFromCategory(categoryName);
@@ -64,8 +61,8 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     @Override
     public void showJoke(Joke joke) {
         String text = joke.getValue();
-        textView.setText(text);
-        Picasso.get().load(joke.getIconUrl()).into(imageView);
+        txtJoke.setText(text);
+        Picasso.get().load(joke.getIconUrl()).into(imgToolbar);
     }
 
     @Override
@@ -74,6 +71,8 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     }
 
     private void setupToolbar() {
-
+        imgToolbar = findViewById(R.id.img_item);
+        txtCategoryToolbar = findViewById(R.id.txt_category);
+        txtCategoryToolbar.setText(categoryName);
     }
 }
