@@ -19,16 +19,16 @@ public class DataService implements JokeRepository, CategoriesRepository {
     }
 
     @Override
-    public void getCategories(final DataListener<List<String>> categories) {
+    public void getCategories(final DataListener<List<String>> listener) {
         service.getCategories().enqueue(new Callback<List<String>>() {
             @Override
             public void onResponse(Call<List<String>> call, Response<List<String>> response) {
-                categories.onDataReceived(response.body());
+                listener.onDataReceived(response.body());
             }
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                categories.onDataError();
+                listener.onDataError();
             }
         });
     }

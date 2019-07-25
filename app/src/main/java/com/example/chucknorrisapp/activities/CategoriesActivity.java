@@ -34,7 +34,7 @@ public class CategoriesActivity extends BaseActivity implements CategoriesUsecas
 
     @Override
     public void onItemClick(String category) {
-        Toast.makeText(this, "category: " + category, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Category: " + category, Toast.LENGTH_LONG).show();
         startActivity(JokeActivity.getIntent(this, category));
     }
 
