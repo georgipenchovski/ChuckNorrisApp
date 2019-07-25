@@ -3,6 +3,8 @@ package com.example.chucknorrisapp.services;
 import com.example.chucknorrisapp.models.Joke;
 import com.example.chucknorrisapp.retrofit.ChuckNorrisService;
 import com.example.chucknorrisapp.retrofit.RetrofitInstance;
+import com.example.chucknorrisapp.services.repositories.CategoriesRepository;
+import com.example.chucknorrisapp.services.repositories.JokeRepository;
 
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class DataService implements JokeRepository, CategoriesRepository {
 
             @Override
             public void onFailure(Call<List<String>> call, Throwable t) {
-                listener.onDataError();
+                listener.onDataError(t.getMessage());
             }
         });
     }
@@ -43,7 +45,7 @@ public class DataService implements JokeRepository, CategoriesRepository {
 
             @Override
             public void onFailure(Call<Joke> call, Throwable t) {
-                listener.onDataError();
+                listener.onDataError(t.getMessage());
             }
         });
     }
