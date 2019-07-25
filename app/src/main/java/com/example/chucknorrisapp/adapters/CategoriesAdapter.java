@@ -18,7 +18,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     private ItemClickListener clickListener;
     private Context context;
 
-
     public CategoriesAdapter(Context context) {
         this.context = context;
         this.categories = new ArrayList<>();
@@ -35,11 +34,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public void onBindViewHolder(@NonNull final CategoriesViewHolder holder, final int position) {
         String categoryName = categories.get(position);
         holder.categoryName.setText(categoryName);
-
-//        Picasso.Builder builder = new Picasso.Builder(context);
-//        builder.build().load(categories.get(position).getCategoryName())
-//                .placeholder((R.drawable.ic_launcher_background))
-//                .error(R.drawable.ic_launcher_background);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
