@@ -62,7 +62,7 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     public void showJoke(Joke joke) {
         String text = joke.getValue();
         txtJoke.setText(text);
-        Picasso.get().load(joke.getIconUrl()).into(imgToolbar);
+        Picasso.get().load(joke.getIconUrl()).placeholder(R.drawable.ic_broken_image_black_24dp).into(imgToolbar);
     }
 
     @Override
