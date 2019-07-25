@@ -1,6 +1,6 @@
 package com.example.chucknorrisapp.usecases;
 
-import com.example.chucknorrisapp.services.CategoriesRepository;
+import com.example.chucknorrisapp.services.repositories.CategoriesRepository;
 import com.example.chucknorrisapp.services.DataListener;
 import com.example.chucknorrisapp.services.DataService;
 
@@ -23,8 +23,8 @@ public class CategoriesUsecase {
             }
 
             @Override
-            public void onDataError() {
-                viewListener.showErrorMessage("Not found categories");
+            public void onDataError(String message) {
+                viewListener.showErrorMessage(message);
             }
         });
     }

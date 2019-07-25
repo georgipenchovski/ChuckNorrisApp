@@ -4,5 +4,5 @@ public interface DataListener<T> {
 
     void onDataReceived(T data);
 
-    void onDataError();
+    void onDataError(String message);
 }

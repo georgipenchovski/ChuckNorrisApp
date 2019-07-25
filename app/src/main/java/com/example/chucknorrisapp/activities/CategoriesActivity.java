@@ -16,7 +16,6 @@ public class CategoriesActivity extends BaseActivity implements CategoriesUsecas
     private RecyclerView recyclerView;
     private CategoriesAdapter categoriesAdapter;
 
-
     @Override
     protected int getLayoutRes() {
         return R.layout.activity_categories;

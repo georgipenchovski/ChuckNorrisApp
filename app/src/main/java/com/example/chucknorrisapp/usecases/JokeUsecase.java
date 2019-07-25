@@ -3,7 +3,7 @@ package com.example.chucknorrisapp.usecases;
 import com.example.chucknorrisapp.models.Joke;
 import com.example.chucknorrisapp.services.DataListener;
 import com.example.chucknorrisapp.services.DataService;
-import com.example.chucknorrisapp.services.JokeRepository;
+import com.example.chucknorrisapp.services.repositories.JokeRepository;
 
 public class JokeUsecase {
 
@@ -22,8 +22,8 @@ public class JokeUsecase {
             }
 
             @Override
-            public void onDataError() {
-                viewListener.showErrorMessage("Not found joke");
+            public void onDataError(String message) {
+                viewListener.showErrorMessage(message);
             }
         });
     }

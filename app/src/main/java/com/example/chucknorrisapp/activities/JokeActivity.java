@@ -18,7 +18,6 @@ public class JokeActivity extends BaseActivity implements JokeUsecase.ViewListen
     private static final String CATEGORY_NAME_EXTRA = "category_name";
     private String categoryName;
     private JokeUsecase jokeUsecase;
-
     private ImageView imgToolbar;
     private TextView txtJoke;
     private Button btnNextJoke;
